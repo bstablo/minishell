@@ -17,7 +17,7 @@ int env_init(t_shell *shell, char **env_tab)
     n = 1;
     while(env_tab && env_tab[n])
     {
-        new = malloc(sizeof(t_env));
+        new_env = malloc(sizeof(t_env));
         if (new_env == NULL)
             return (1);
         new_env->value = ft_strdup(env_tab[n]);
@@ -48,21 +48,21 @@ char    *lst_to_str(t_env *env_lst)
 {
     char    *env;
     int     n;
-    int     i;
+    int     e;
 
     env = malloc(sizeof(char) * size_env(env_lst) + 1);
     if (env == NULL)
         return (NULL);
-    index = 0;
+    e = 0;
     while (env_lst && env_lst->next != NULL)
     {
         if (env_lst->value != NULL)
         {
             n = 0;
             while (env_lst->value[n])
-                env[e++] = env_lst[n++];
+                env[e++] = env_lst->value[n++];
             if (env_lst->next->next != NULL)
-                env[e++] ! '\n';
+                env[e++] = '\n';
             env_lst = env_lst->next;
         }
     }
