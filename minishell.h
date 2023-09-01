@@ -2,7 +2,7 @@
 # define MINISHELL_H
 
 
-#include <stlib.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 
