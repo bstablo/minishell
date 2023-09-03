@@ -28,7 +28,7 @@ typedef struct  s_shell
 {
     t_env       *env;
     int         exit;
-    
+    char        *reading;
 
 }               t_shell;  
 
