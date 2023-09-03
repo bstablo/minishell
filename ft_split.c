@@ -6,7 +6,7 @@
 /*   By: bstablo <bstablo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:40:28 by bstablo           #+#    #+#             */
-/*   Updated: 2023/09/03 13:41:46 by bstablo          ###   ########.fr       */
+/*   Updated: 2023/09/03 17:52:46 by bstablo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ static size_t	ft_nb_word(char const *str, char c)
 	x = 0;
 	while (str[n] != '\0')
 	{
+		if (str[n++] == 34)
+		{
+			while (str[n] != 34)
+				n++;
+			x++;
+		}
+		if (str[n++] == 39)
+		{
+			while (str[n] != 39)
+				n++;
+			x++;
+		}
+			
 		if ((str[n + 1] == c && str[n] != c)
 			|| (str[n + 1] == '\0' && str[n] != c))
 			x++;
@@ -35,7 +48,15 @@ static size_t	size_word(char const *s, char c)
 
 	size = 0;
 	while (s[size] && s[size] != c)
+	{
+		if (s[size++] == 34)
+			while (s[size] != 34)
+				size++;
+		if (s[size++] == 39)
+			while (s[size] != 39)
+				size++;
 		size++;
+	}
 	return (size);
 }
 
