@@ -6,7 +6,7 @@
 /*   By: gfere <gfere@student.42nice.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 14:43:35 by gfere             #+#    #+#             */
-/*   Updated: 2023/09/03 17:52:40 by gfere            ###   ########.fr       */
+/*   Updated: 2023/09/03 18:15:38 by gfere            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_type_token(char *token)
 	else
 		return (-1);
 }
-/* Return 0 = commande | Return 1 = argument */
+/* Return 0 = commande | Return 1 = argument | -1 = erreur */
 int	ft_cmdarg(char **tab, char *token, int n_prev)
 {
 	int index;
@@ -43,8 +43,11 @@ int	ft_cmdarg(char **tab, char *token, int n_prev)
 	}
 	if (ft_type_token(tab[index]) == 1 && order == 0)
 		return (0);
-	else
+	else if (ft_type_token(tab[index]) == 1 && order > 0
+			&& ft_type_token(tab[index - 1] == 1))
 		return (1);
+	else
+		return (-1);
 }
 /* 0: commande externe | 1: commande interne */
 int	ft_in_out_cmd(char *cmd)
